@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using FlickrLike.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using System.Security.Claims;
 
 namespace FlickrLike.Controllers
 {
@@ -20,10 +23,41 @@ namespace FlickrLike.Controllers
             _db = db;
         }
 
-        //GET /Index
+        //GET FlickrLike/Index
         public IActionResult Index()
         {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            return View(_db.Images
+                .Where(image => image.User.Id == userId)
+                .ToList());
+        }
+
+        //GET FlickrLike/Create
+        public IActionResult Create()
+        {
             return View();
+        }
+        //POST FlickrLike/Create
+        [HttpPost]
+        public async Task<IActionResult> Create(string Name, IFormFile picture)
+        {
+            byte[] photoArray = new byte[0];
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+
+            if (picture.Length > 0)
+            {
+                using (var fileStream = picture.OpenReadStream())
+                using (var ms = new MemoryStream())
+                {
+                    fileStream.CopyTo(ms);
+                    photoArray = ms.ToArray();
+                }
+            }
+            Image newImage = new Image(Name, photoArray, currentUser);
+            _db.Images.Add(newImage);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

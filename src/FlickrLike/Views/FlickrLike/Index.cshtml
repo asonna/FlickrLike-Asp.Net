@@ -2,9 +2,25 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model ICollection<FlickrLike.Models.Image>
 
 @using System.Security.Claims
 
 <h2>Here are your images, @User.Identity.Name</h2>
 <hr />
 @Html.ActionLink("Add a new photo", "Create")
+<hr />
+@foreach (var image in Model)
+{
+    
+    string Image = "";
+    if (image.Photo != null)
+    {
+        var base64 = Convert.ToBase64String(image.Photo);
+        Image = String.Format("data:image/jpg;base64, " + base64);
+    }
+    
+    <img src="@Image" />
+    <p>@image.Name</p>
+    <hr />
+}
