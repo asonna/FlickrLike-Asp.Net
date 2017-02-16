@@ -50,6 +50,9 @@ namespace FlickrLike
             }
 
             app.UseIdentity();
+
+            app.UseStaticFiles();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
