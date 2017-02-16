@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FlickrLike", "src\FlickrLike\FlickrLike.xproj", "{5AD55078-A019-46A9-BB37-133401766FD0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DB9F91C6-C9CD-42B7-BBAA-DAD4FCF70862}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FlickrLike.Tests", "FlickrLike.Tests\FlickrLike.Tests.xproj", "{8CF272CB-0446-4B88-953C-930F79AE762D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,11 +26,16 @@ Global
 		{5AD55078-A019-46A9-BB37-133401766FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AD55078-A019-46A9-BB37-133401766FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AD55078-A019-46A9-BB37-133401766FD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CF272CB-0446-4B88-953C-930F79AE762D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CF272CB-0446-4B88-953C-930F79AE762D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CF272CB-0446-4B88-953C-930F79AE762D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CF272CB-0446-4B88-953C-930F79AE762D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5AD55078-A019-46A9-BB37-133401766FD0} = {1C3413F6-C1AC-4D00-862A-07D05A99363A}
+		{8CF272CB-0446-4B88-953C-930F79AE762D} = {DB9F91C6-C9CD-42B7-BBAA-DAD4FCF70862}
 	EndGlobalSection
 EndGlobal
