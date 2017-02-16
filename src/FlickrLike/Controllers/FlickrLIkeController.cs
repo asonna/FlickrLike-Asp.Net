@@ -26,7 +26,7 @@ namespace FlickrLike.Controllers
         //GET FlickrLike/Index
         public IActionResult Index()
         {
-            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             return View(_db.Images
                 .Where(image => image.User.Id == userId)
                 .ToList());
