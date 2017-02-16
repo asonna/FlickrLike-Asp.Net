@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Edit a Photo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model FlickrLike.Models.Image
+<h2>Edit photo</h2>
+
+@using (Html.BeginForm("Edit", "FlickrLike", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(model => model.Id)
+
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+    <br />
+    @Html.LabelFor(model => model.Photo)
+    <input type="file" id="picture" name="picture" required />
+
+    <input type="submit" value="Update" />
+}

@@ -9,9 +9,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 namespace FlickrLike.Controllers
 {
+    [Authorize]
     public class FlickrLikeController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -59,5 +61,32 @@ namespace FlickrLike.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        //GET FlickrLike/Edit
+        public IActionResult Edit(int id)
+        {
+            Image thisImage = _db.Images.FirstOrDefault(im => im.Id == id);
+            return View(thisImage);
+        }
+        [HttpPost]
+        public IActionResult Edit(Image image, IFormFile picture)
+        {
+            byte[] photoArray = new byte[0];
+
+            if (picture.Length > 0)
+            {
+                using (var fileStream = picture.OpenReadStream())
+                using (var ms = new MemoryStream())
+                {
+                    fileStream.CopyTo(ms);
+                    photoArray = ms.ToArray();
+                }
+            }
+            image.Photo = photoArray;
+            _db.Entry(image).State = EntityState.Modified;
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }

@@ -54,7 +54,7 @@ namespace FlickrLike
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Account}/{action=Index}/{id?}");
+                    template: "{controller=FlickrLike}/{action=Index}/{id?}");
             });
 
             app.Run(async (context) =>
