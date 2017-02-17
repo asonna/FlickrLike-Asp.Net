@@ -24,18 +24,18 @@
             @Html.TextBoxFor(m => m.Email)
         </div>
     </div>
-        <br />
-        <div class="row">
-            <div class="col-xs-4">
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-            </div>
-
-            <div class="col-xs-4">
-                @Html.LabelFor(m => m.ConfirmPassword)
-                @Html.PasswordFor(m => m.ConfirmPassword)
-            </div>
-
-            <input type="submit" value="Register" />
+    <br />
+    <div class="row">
+        <div class="col-xs-4">
+            @Html.LabelFor(m => m.Password)
+            @Html.PasswordFor(m => m.Password)
         </div>
-            }
+
+        <div class="col-xs-4">
+            @Html.LabelFor(m => m.ConfirmPassword)
+            @Html.PasswordFor(m => m.ConfirmPassword)
+        </div>
+
+        <input type="submit" value="Register" />
+    </div>
+}
